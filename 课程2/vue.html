@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src=" https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+        #box{
+           width: 400px;
+        }
+        .navigation{
+            width: 100px;
+            height: 30px;
+            border: 1px solid red;
+            float: left;
+        }
+        .navContent{
+            width: 398px;
+            height: 368px;
+            border: 1px solid orange;
+            float: left;
+            font-size: 40px;
+        }
+        .bgColor{
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button class="navigation" 
+        v-bind:class="{bgColor:index===num}" 
+        v-for="(nav,index) in aMes"
+        v-on:click="num=index"
+        >
+            {{ nav.title }}
+        </button>
+        <div class="navContent" 
+        v-for="(navcon,index) in aMes"
+        v-if="num===index"
+        >
+            {{ navcon.content }}
+        </div>
+    </div>
+    <script>
+        var vm =new Vue({
+            el:"#box",
+            data:{
+                aMes:[
+                    {
+                        title:'导航',
+                        content:'这是个导航'
+                    },
+                    {
+                        title:'小说',
+                        content:'这是个小说'
+                    },
+                    {
+                        title:'音乐',
+                        content:'这是个音乐'
+                    },
+                    {
+                        title:'图片',
+                        content:'这是图片'
+                    }
+                ],
+                num:0
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>
