@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <link rel="stylesheet" href="style/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="./component/按钮组件.js"></script>
+    <script src="./component/图标组件.js"></script>
+    <script src="./component/表格组件.js"></script>
+</head>
+<body>
+    <div id="box">
+    </div>
+    <script>
+        new Vue({
+            el:'#box',
+            template:
+            `
+            <div class="app">
+            <Icon name='plus' size=30 color='red'></Icon>
+            <Icon name='pushpin' size="dfdfs" color='yellow'></Icon>
+
+            <Button size='333' color='warning'>按钮233331</Button>
+            <Button size='sm' >按钮233331</Button>
+
+           <Table 
+            :column="['#','	First Name', 'Last Name','User Name']" 
+            :data="[{id:1,fristname:'Mark','lastname':'Otto','username':'@mdo'},{id:2,fristname:'Jacob','lastname':'Thornton','username':'@fat'}]"
+            />
+            </div>
+            `
+        })
+    </script>
+</body>
+</html>
