@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script>
+        const cap1={
+
+            template:
+            `
+            <div>组件1
+                <input type="text" v-model="input">
+            </div>
+            `,
+            data(){
+                return{
+                    input:''
+                }
+            }
+        }
+        const cap2={
+            template:
+            `
+            <div>组件2
+                <input type="text" v-model="input">
+            </div>
+            `,
+            data(){
+                return{
+                    input:''
+                }
+            }
+        }
+        const cap3={
+            template:
+            `
+            <div>组件3
+                <input type="text" v-model="input">
+            </div>
+            `,
+            data(){
+                return{
+                    input:''
+                }
+            }
+        }
+        var vm=new Vue({
+            el:"#app",
+            components:{
+                cap1,
+                cap2,
+                cap3
+            },
+            template:
+            `
+            <div>
+                <keep-alive>
+                <components :is="value"/>
+                </keep-alive>
+                <button @click="value='cap1'">cap1</button>
+                <button @click="value='cap2'">cap2</button>
+                <button @click="value='cap3'">cap3</button>
+            </div>
+            `,
+            data:{
+                value:"cap1"
+            }
+
+        })
+    </script>
+</body>
+</html>

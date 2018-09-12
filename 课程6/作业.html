@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/vue.min.js"></script>
+    <title>手风琴特效</title>
+    <style>
+        .parents-ul,.childs-ul{
+            margin: 0px;
+            padding: 0px;
+            width: 200px;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .parents-ul .parents, .childs-ul .childs{
+            list-style: none;
+        }
+        .parents{
+            background: #d4d0d0;
+            width: 202px;
+            height: auto;
+        }
+        .childs-ul .childs{
+            background: rgb(230, 227, 227);
+            transition: opacity all .4s;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       
+    </div>
+    <script>
+        var tem={
+           
+            data(){
+                return{
+                    data:[
+                        {
+                            show:false,
+                            name:"父级菜单",
+                            list:[
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1"
+                            ]
+                        },
+                        {
+                            show:false,
+                            name:"父级菜单",
+                            list:[
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1"
+                            ]
+                        },
+                        {
+                            show:false,
+                            name:"父级菜单",
+                            list:[
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1"
+                            ]
+                        },
+                        {
+                            show:false,
+                            name:"父级菜单",
+                            list:[
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1",
+                                "子集菜单1"
+                            ]
+                        }
+                    ]
+                }
+            },
+            template:
+            `
+            <ul class="parents-ul">
+                <li class="parents" v-for="(iteam,index) in data" >
+                   <div @click="change(iteam,index)">{{iteam.name}}</div>
+                    <ul class="childs-ul">
+                        <li class="childs" v-for="(childIteam) in iteam.list" v-show="iteam.show" @click="show(iteam)">
+                            {{childIteam}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            `,
+            methods:{
+                change(iteam,index){
+                    this.data.forEach(element => {
+                        if(element.show!==this.data[index].show){
+                            element.show=false;
+                        }
+                    });
+                    iteam.show=!(iteam.show);
+                },
+                show(iteam){
+                    alert("子菜单")
+                }
+            }
+        }
+        var vm =new Vue({
+            el:"#app",
+            data:{
+               
+            },
+            components:{
+                tem
+            },
+            template:
+            `
+            <div>
+            <tem/>
+            </div>
+            `
+        })
+    </script>
+</body>
+</html>

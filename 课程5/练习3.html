@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        const team={
+            props:{
+                teamMessage:String
+            },
+            template:
+            `
+            <h3>{{ teamMessage }}</h3>
+            `,
+            methods:{
+                getMessage(a){
+                    this.teamMessage=a
+                }
+            }
+        }
+        var vm= new Vue({
+            el:"#app",
+            data:{
+                message:"子组件"
+            },
+            template:
+            `
+            <div>
+                <h1>实例</h1>
+                <team ref="msg"/>
+            </div>
+            `,
+            components:{
+                team
+            },
+            methods:{
+                
+            },
+            mounted(){
+                    console.log(this.$refs.msg)
+                    this.$refs.msg.getMessage('我是子组件一')
+            }
+        })
+    </script>
+</body>
+</html>

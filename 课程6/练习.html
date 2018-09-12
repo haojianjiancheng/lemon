@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <script src="./component/滑钮.js"></script>
+</head>
+    <style>
+        .button-bg{
+            width: 60px;
+            height: 30px;
+            border-radius: 30px;
+            background: rgb(182, 179, 179);
+            transition: all .2s ease-in
+        }
+        .button-bg .button-btn{
+            margin: 1px;
+            width: 29px;
+            height: 29px;
+            border-radius: 15px;
+            background: white;
+            transition: transform .2s ease-in;
+        }
+        .button-bg-change{
+            background: rgb(122, 236, 122);
+        }
+        .button-bg-change .button-btn{
+            transform: translateX(29px);
+            right: 0;
+        }
+    </style>
+<body>
+    <div id="app">
+        
+    </div>
+    <script>
+        var vm =new Vue({
+            el:"#app",
+            data:{
+                mValue:false
+            },
+            template:
+            `
+            <div>
+                <slideButton :value="mValue"/>
+                <slideButton :value="!mValue"/>
+                <button @click="mValue=!mValue">切换</button>
+            </div>
+            `
+        })
+    </script>
+</body>
+</html>

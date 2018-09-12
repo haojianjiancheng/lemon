@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+    <style>
+        #app .box{
+            width: 300px;
+            height: 400px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        #app .box .message{
+            height: 300px;
+            border: 1px solid black;
+            border-radius: 5px;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+        #app .box .message ul{
+            padding: 0;
+            width: 100%;
+        }
+        #app .box .message ul li{
+            list-style: none;
+        }
+        #app .box .message ul li .name{
+            border-radius: 3px;
+        }
+        #app .box .message ul li .name-message{
+            background: orange;
+            border-radius: 3px;
+        }
+        #app .box .input{
+            height: 80px;
+            border-radius: 5px;
+            background: gray;
+            position: relative;
+        }
+        #app .box .input textarea{
+            width: 70%;
+            height: 80%;
+            resize: none;
+        }
+        #app .box .input .b1{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        #app .box .input .b2{
+            position: absolute;
+            top: 50px;
+            right: 10px;
+        }
+        .right{
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="box">
+            <div class="message">
+                <ul>
+                    <li v-for="(iteam,index) in message" :class="{right:iteam.float}">
+                        <span class="name">{{iteam.name}}</span>
+                        <span class="name-message " >{{iteam.content}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="input">
+                <textarea v-model="inputmes" @keydown.enter.prevent="push"></textarea>
+                <p v-model="change"></p>
+                <button class="b1" @click="boss" >{{change}}</button>
+                <button class="b2" @click="push" >输入</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var vm =new Vue({
+            el:"#app",
+            data:{
+                inputmes:"",
+                message:[
+                   
+                ],
+                change:'校长',
+                float:true
+            },
+            methods:{
+                boss(){
+                    if(this.change=="老师"){
+                        this.change="校长"
+                        this.float=true
+                    }else{
+                        this.change="老师"
+                        this.float=false
+                    } 
+                },
+                push(){
+                    if(this.inputmes!=''){
+                        this.message.push(
+                            {
+                                name:this.change,
+                                content:this.inputmes,
+                                float:this.float
+                            }
+                        )
+                    }
+                   
+                    this.inputmes=""
+                }
+            }
+        })
+    </script>
+</body>
+</html>

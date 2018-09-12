@@ -10,5 +10,19 @@ Vue.component('Icon',{
             type:Number
         }
     },
-    template:`<span class="glyphicon" :class="'glyphicon-'+name" :style="{color:color,fontSize:size+'px'}" aria-hidden="true"></span>`
+    template:
+    `
+    <span class="glyphicon" 
+    :class="iconname" 
+    :style="{color:color,fontSize:size+'px'}" 
+    aria-hidden="true">
+    </span>
+    `,
+    computed:{
+        iconname(){
+            if(this.name){
+               return "glyphicon-"+this.name
+            }
+        }
+    }
 })

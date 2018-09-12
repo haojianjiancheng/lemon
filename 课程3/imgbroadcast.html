@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+        .imgwindow{
+            width: 500px;
+            height: 300px;
+            /* overflow: hidden; */
+        }
+        .imgmove{
+            width: 3000px;
+            height: 300px;
+        }
+        .imgmove img{
+            width: 500px;
+            height: 300px;
+        }
+        .imgmove ul{
+            margin: 0;
+            padding: 0;
+        }
+        .imgmove ul li{
+            list-style: none;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="imgwindow">
+            <div class="imgmove">
+                <ul>
+                    <li>
+                        <img :src="imgArray[imgArray.length-1]" alt="">
+                    </li>
+                    <li>
+                        <img :src="iteam" v-for="(iteam,index) in imgArray" :key="index" alt="">
+                    </li>   
+                    <li>
+                        <img :src="imgArray[0]" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var vm =new Vue({
+            el:"#box",
+            data:{
+                imgArray:[
+                    "./imgs/b2f5821e4575da7ebbb8ad70a46bc734.jpg",
+                    "./imgs/b097b5422018b3e8e55fbaf5609dcf5f.jpg",
+                    "./imgs/b721db4a05cee430cde3b3a3e62383a1.jpg",
+                    "./imgs/04060835dc1143bd31a70191c35d77f1.jpg"
+                ],
+                num:0
+            },
+            computed:{
+                remove(){
+                    return{
+                        transform: translateX()
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

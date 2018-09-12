@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <script src="./图标组件.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script>
+        const tem ={
+            props:{
+                value:String,
+                name:String,
+                color:String,
+                size:Number
+            },
+            watch:{
+                value(v){
+                    this.butName=v
+                }
+            },
+            template:
+            `
+            <div>
+                <button>
+                    <Icon :name="name" :color="color" :size="size" @aa="showb"/>
+                    {{butName}}
+                </button>
+                name:<input type="text" v-model="name" placeholder="图标的名字">
+                color:<input type="text" v-model="color" placeholder="图标的颜色">
+                size:<input type="text" v-model="size" placeholder="图标的尺寸">
+                value:<input type="text" v-model="value" placeholder="按钮名称">
+            </div>
+            `,
+            data(){
+                return{
+                    butName:this.value
+                }
+            },
+            methods:{
+                showb(a){
+                    this.$emit("zz")
+                    console.log("组件中的aa触发了")
+                }
+            }
+        }
+        var vm =new Vue({
+            el:"#app",
+            data:{
+                message:"按钮"
+            },
+            components:{
+                tem
+            },
+            template:
+            `
+            <div>
+                <tem :value="message"/>
+            </div>
+            `,
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

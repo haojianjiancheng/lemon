@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+    <style>
+        input{
+            border-radius: 3px;
+            border: 1px solid black;
+            height: 30px;
+            width: 150px;
+        }
+        .text{
+            margin: 0;
+            padding: 0;
+        }
+        .text li{
+            padding: 1px;
+            list-style: none;
+            width: 150px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="ap">
+        <input type="text" placeholder="搜搜" v-model="input">
+        <ul class="text">
+            <li ></li>
+        </ul>
+    </div>
+    <script>
+        var vm= new Vue({
+            el:"#ap",
+            input:"",
+            data:{
+                message:["abc","ad","ams"]
+            },
+            computed:{
+                
+             
+            }
+
+        })
+    </script>
+</body>
+</html>

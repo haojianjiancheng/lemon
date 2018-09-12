@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$emit传值</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script>
+        const tem ={
+            props:{
+                value:String,
+                parents:String
+            },
+            watch:{
+                value(newval,oldval){
+                    this.bigCity=newval
+                }
+            },
+            template:
+            `
+            <div>
+                <h3>实例传给子组件的值:{{bigCity}}</h3>
+                <span>子组件中的值：{{parents}}</span>
+                <input type="text" v-model="bigCity" @input="push(bigCity)">
+                <p>子组件传给实例的值:{{bigCity}}</p>
+            </div>
+            `,
+            data(){
+                return{
+                    bigCity:this.value
+                }
+            },
+            methods:{
+                push(value){
+                    this.$emit("aa",value)
+                    console.log(value)
+                }
+            }
+        }
+        var vm =new Vue({
+            el:"#app",
+            data:{
+                message:"大连",
+                city:""
+            },
+            components:{
+                tem
+            },
+            template:
+            `
+            <div >
+                <tem :value="message" :parents="city" @aa="bb"></tem>
+                实例传给组件的值：<input type="text" v-model="message">
+            </div>
+            `,
+            methods:{
+                bb(city){
+                    this.message=city
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
